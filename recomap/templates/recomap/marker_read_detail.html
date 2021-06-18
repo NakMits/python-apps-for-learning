@@ -1,0 +1,15 @@
+{% extends 'recomap/base.html' %}
+
+{% block header %}
+        <div class="alert alert-primary" role="alert">Marker詳細ページ</div>
+{% endblock header %}
+
+{% block content %}
+    <p>
+        {{ object.title }}
+        {{ object.tag }}
+        {{ object.memo }}
+        {{ object.lat }}
+        {{ object.lng }}
+    </p>
+{% endblock content %}

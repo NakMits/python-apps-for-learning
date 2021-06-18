@@ -1,0 +1,12 @@
+{% extends 'recomap/base.html' %}
+
+{% block header %}
+    <div class="alert alert-primary" role="alert">Marker更新ページ</div>
+{% endblock header %}
+
+{% block content %}
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="更新する">
+    </form>
+{% endblock content %}

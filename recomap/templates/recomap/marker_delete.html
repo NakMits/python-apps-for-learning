@@ -1,0 +1,11 @@
+{% extends 'recomap/base.html' %}
+
+{% block header %}
+    <div class="alert alert-primary" role="alert">Marker削除ページ</div>
+{% endblock header %}
+
+{% block content %}
+    <form action="" method="post">{% csrf_token %}
+        <input type="submit" value="削除">
+    </form>
+{% endblock content %}

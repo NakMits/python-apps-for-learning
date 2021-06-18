@@ -1,0 +1,22 @@
+{% extends 'recomap/base.html' %}
+
+{% block header %}
+            <div class="alert alert-primary" role="alert">Markerリストページ</div>
+{% endblock header %}
+
+{% block content %}
+    {% for item in object_list %}
+        <p>
+            {{ item.title }}
+            <a href="/marker/detail/{{ item.id }}" class="btn btn-primary" tabindex="-1" role="button"
+               aria-disabled="true">詳細</a>
+            <a href="/marker/update/{{ item.id }}" class="btn btn-primary" tabindex="-1" role="button"
+               aria-disabled="true">更新</a>
+            <a href="/marker/delete/{{ item.id }}" class="btn btn-primary" tabindex="-1" role="button"
+               aria-disabled="true">削除</a>
+        </p>
+    {% endfor %}
+    <p><a href="/marker/create" class="btn btn-primary btn-lg" tabindex="-1" role="button"
+          aria-disabled="true">新規作成</a>
+    </p>
+{% endblock content %}

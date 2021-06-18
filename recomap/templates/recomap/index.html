@@ -6,9 +6,9 @@
 
 {% block content %}
     <div class='container'>
-        <p><a href="/helloworld" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">helloworld</a>
+        <p><a href="{% url 'recomap:helloworld' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">helloworld</a>
         </p>
-        <p><a href="/map" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">map</a></p>
-        <p><a href="/marker" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">marker</a></p>
+        <p><a href="{% url 'recomap:map' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">map</a></p>
+        <p><a href="{% url 'recomap:marker_read_list' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">marker</a></p>
     </div>
 {% endblock content %}

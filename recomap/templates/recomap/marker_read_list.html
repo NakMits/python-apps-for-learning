@@ -8,15 +8,15 @@
     {% for item in object_list %}
         <p>
             {{ item.title }}
-            <a href="/marker/detail/{{ item.id }}" class="btn btn-primary" tabindex="-1" role="button"
+            <a href="{% url 'recomap:marker_read_detail' item.pk %}" class="btn btn-primary" tabindex="-1" role="button"
                aria-disabled="true">詳細</a>
-            <a href="/marker/update/{{ item.id }}" class="btn btn-primary" tabindex="-1" role="button"
+            <a href="{% url 'recomap:marker_update' item.pk %}" class="btn btn-primary" tabindex="-1" role="button"
                aria-disabled="true">更新</a>
-            <a href="/marker/delete/{{ item.id }}" class="btn btn-primary" tabindex="-1" role="button"
+            <a href="{% url 'recomap:marker_delete' item.pk %}" class="btn btn-primary" tabindex="-1" role="button"
                aria-disabled="true">削除</a>
         </p>
     {% endfor %}
-    <p><a href="/marker/create" class="btn btn-primary btn-lg" tabindex="-1" role="button"
+    <p><a href="{% url 'recomap:marker_create' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button"
           aria-disabled="true">新規作成</a>
     </p>
 {% endblock content %}

@@ -1,6 +1,10 @@
 {% extends 'recomap/base.html' %}
 
-{% block header %} 
+{% block navigation %}
+    {% include 'recomap/navigation_bar.html' %}
+{% endblock navigation %}
+
+{% block header %}
     <div class="alert alert-primary" role="alert">hello world!</div>
 {% endblock header %}
 

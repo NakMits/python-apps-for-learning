@@ -16,19 +16,9 @@
         <title>recomap</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'recomap:index' %}">Python初心者Web</a>
-                <div class="collapse navbar-collapse">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" href="{% url 'recomap:index' %}">Home</a>
-                        <a class="nav-link active" href="{% url 'recomap:helloworld' %}">HelloWorld</a>
-                        <a class="nav-link active" href="{% url 'recomap:map' %}">Map</a>
-                        <a class="nav-link active" href="{% url 'recomap:marker_read_list' %}">Marker</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        {% block navigation %}
+        {% endblock navigation %}
+
         {% block header %}
         {% endblock header %}
 

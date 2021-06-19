@@ -1,14 +1,21 @@
 {% extends 'recomap/base.html' %}
 
+{% block navigation %}
+    {% include 'recomap/navigation_bar.html' %}
+{% endblock navigation %}
+
 {% block header %}
     <div class="alert alert-primary" role="alert">Indexページ</div>
 {% endblock header %}
 
 {% block content %}
     <div class='container'>
-        <p><a href="{% url 'recomap:helloworld' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">helloworld</a>
+        <p><a href="{% url 'recomap:helloworld' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button"
+              aria-disabled="true">helloworld</a>
         </p>
-        <p><a href="{% url 'recomap:map' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">map</a></p>
-        <p><a href="{% url 'recomap:marker_read_list' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">marker</a></p>
+        <p><a href="{% url 'recomap:map' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button"
+              aria-disabled="true">map</a></p>
+        <p><a href="{% url 'recomap:marker_read_list' %}" class="btn btn-primary btn-lg" tabindex="-1" role="button"
+              aria-disabled="true">marker</a></p>
     </div>
 {% endblock content %}

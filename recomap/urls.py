@@ -4,7 +4,6 @@ from . import views
 app_name = 'recomap'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('helloworld/', views.HelloWorldView.as_view(), name='helloworld'),
     path('map/', views.MapView.as_view(), name='map'),
     path('marker/', views.MarkerReadListView.as_view(), name='marker_read_list'),
     path('marker/detail/<int:pk>/', views.MarkerReadDetailView.as_view(), name='marker_read_detail'),

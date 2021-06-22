@@ -15,10 +15,6 @@ class IndexView(TemplateView):
     template_name = 'recomap/index.html'
 
 
-class HelloWorldView(TemplateView):
-    template_name = 'recomap/helloworld.html'
-
-
 class MapView(TemplateView):
     template_name = 'recomap/map.html'
 

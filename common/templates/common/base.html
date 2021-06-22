@@ -13,11 +13,14 @@
                 crossorigin="anonymous"
         />
 
-        <title>recomap</title>
+        {% block cunstomcss %}
+        {% endblock cunstomcss %}
+
+        <title>{% block title %}{% endblock title %}</title>
     </head>
     <body>
-        {% block navigation %}
-        {% endblock navigation %}
+        {% block navbar %}
+        {% endblock navbar %}
 
         {% block header %}
         {% endblock header %}

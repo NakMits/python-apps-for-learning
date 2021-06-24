@@ -3,24 +3,31 @@
 {% load static %}
 
 {% block cunstomcss %}
-    <link rel="stylesheet" type="text/css" href="{% static 'user/login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/signin.css' %}">
 {% endblock cunstomcss %}
 
 {% block content %}
     <main class="form-signin">
-        <form>
+        <form method="post" action="">{% csrf_token %}
+            {% if msg %}
+                <div class="alert alert-primary" role="alert">{{ msg }}</div>
+            {% endif %}
             <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">サインインする</h1>
             <label for="inputEmail" class="visually-hidden">メールアドレス</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="メールアドレス" required autofocus>
+            <input type="email" id="inputEmail" class="form-control" name="email" placeholder="メールアドレス" required
+                   autofocus>
             <label for="inputPassword" class="visually-hidden">パスワード</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="パスワード" required>
+            <input type="password" id="inputPassword" class="form-control" name="password" placeholder="パスワード"
+                   required>
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> 記憶する
                 </label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">サインイン</button>
+            <p><a href="{% url 'user:signup' %}" class="w-100 btn btn-lg btn-secondary" tabindex="-1" role="button"
+                  aria-disabled="true">サインアップはこちら</a></p>
             <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
         </form>
     </main>

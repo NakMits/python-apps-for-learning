@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 
@@ -21,9 +22,7 @@ def signin(request):
         user = authenticate(request_, username=email, password=password)
         if user:
             login(request_, user)
-            context = {'msg': 'サインイン完了！'}
-            template = 'user/signin.html'
-            return render(request, template, context)
+            return redirect('/admin')
         else:
             context = {'msg': 'メールアドレス もしくは パスワード が一致しません。'}
             template = 'user/signin.html'
@@ -45,16 +44,12 @@ def signup(request):
         email = request_.POST['email']
         password = request_.POST['password']
         try:
-            User.objects.get(username=email)
+            user = User.objects.create_superuser(email, email, password)
+            login(request_, user)
+            return redirect('/admin')
+        except IntegrityError:
             context = {'msg': f'{email} は既に登録済みです。'}
             template = 'user/signup.html'
-            return render(request, template, context)
-        except:
-            User.objects.create_user(email, email, password)
-            template = 'user/signup.html'
-            context = {'msg': 'サインアップ完了！'}
-            user = authenticate(request_, username=email, password=password)
-            login(request_, user)
             return render(request, template, context)
 
     if request.method == 'GET':

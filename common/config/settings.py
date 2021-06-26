@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cleanup',
+    'imagekit',
     'home.apps.HomeConfig',
     'user.apps.UserConfig',
     'recomap.apps.RecomapConfig',
@@ -120,6 +122,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(os.path.join(BASE_DIR, 'common'), 'static'),
 ]
+
+MEDIA_URL = '/common/media/'
+
+MEDIA_ROOT = os.path.join(os.path.join(BASE_DIR, 'common'), 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

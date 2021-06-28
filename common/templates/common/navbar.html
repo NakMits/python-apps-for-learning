@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- 左上 ブランド枠-->
+        <a class="navbar-brand" href="{% url 'recomap:index' %}">Recomap</a>
+        <!-- 右上 折りたたみボタン(スマホのみ) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#defaultNavBar" aria-controls="defaultNavBar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- 中 内容 -->
+        <div class="collapse navbar-collapse" id="defaultNavBar">
+            <!-- ページリンク (左寄せ)  -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'recomap:map' %}">
+                        <i class="bi bi-pin-map"></i>
+                        全体マップ
+                    </a>
+                </li>
+            </ul>
+            <!-- ユーザー関連 (右寄せ)  -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <!-- ログインしている場合に表示  -->
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person"></i>
+                        {{user.username}}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'recomap:marker_create' %}">口コミを投稿</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'recomap:marker_read_list' %}">口コミ一覧</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'user:signin' %}">ログアウト</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- ログインしていない場合に表示  -->
+                {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'user:signin' %}" class="btn btn-primary">
+                        <i class="bi bi-pen"></i>
+                        ログイン
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

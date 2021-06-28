@@ -7,6 +7,9 @@
 <a href="https://github.com/NakMits/python-apps-for-learning" alt="pipenv locked python version">
     <img src="https://img.shields.io/github/pipenv/locked/python-version/NakMits/python-apps-for-learning" />
 </a>
+<a href="https://github.com/NakMits/python-apps-for-learning" alt="django version">
+    <img src="https://img.shields.io/badge/django-v3.2.4-blue?style=flat" />
+</a>
 <a href="https://github.com/NakMits/python-apps-for-learning/graphs/contributors" alt="repository contributors">
     <img src="https://img.shields.io/github/contributors/NakMits/python-apps-for-learning" />
 </a>

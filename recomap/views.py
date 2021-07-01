@@ -37,7 +37,7 @@ class MarkerReadDetailView(DetailView):
 class MarkerCreateView(CreateView):
     template_name = 'recomap/marker_create.html'
     model = models.MarkerModel
-    fields = ('title', 'tag', 'memo', 'lat', 'lng')
+    fields = ('title', 'author', 'image', 'tag', 'memo', 'lat', 'lng')
     success_url = reverse_lazy('recomap:marker_read_list')
 
 
@@ -50,7 +50,7 @@ class MarkerDeleteView(DeleteView):
 class MarkerUpdateView(UpdateView):
     template_name = 'recomap/marker_update.html'
     model = models.MarkerModel
-    fields = ('title', 'tag', 'memo', 'lat', 'lng')
+    fields = ('title', 'author', 'image', 'tag', 'memo', 'lat', 'lng')
     success_url = reverse_lazy('recomap:marker_read_list')
 
 

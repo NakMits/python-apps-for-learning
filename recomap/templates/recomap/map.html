@@ -1,7 +1,48 @@
 {% extends 'common/base.html' %}
 
+{% load static %}
+
 {% block content %}
+    <div class="modal fade" id="markerModal" tabindex="-1" aria-labelledby="markerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{% url 'recomap:marker_create' %}" method="post"
+                      enctype="multipart/form-data">{% csrf_token %}
+                    <div class="modal-header">
+                        <input type="text" name="title" class="form-control form-control-lg" maxlength="100" id="title"
+                               placeholder="タイトル" required>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <canvas class="img-fluid img-thumbnail" onclick=fileSelect()
+                                    id="preview"></canvas>
+                            <input type="file" name="image" class="form-control-file" accept='image/*'
+                                   onchange=updatePreviewByFile(this.files[0]); style="display:none" id="image">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" name="tag" class="form-control" maxlength="100" id="tag"
+                                   placeholder="タグ">
+                        </div>
+                        <div class="mb-3">
+                            <textarea name="memo" class="form-control" rows="5" id="memo" placeholder="メモ"></textarea>
+                        </div>
+                        <input type='hidden' name='author' value='{{ user.username }}' id="author" required>
+                        <input type='hidden' name='lat' value='99.9999999999' id="lat" required>
+                        <input type='hidden' name='lng' value='99.9999999999' id="lng" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる
+                        </button>
+                        <button type="submit" class="btn btn-primary">送信</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div id="map"></div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#markerModal"
+            data-bs-whatever="@mdo" style="display:none" id="markerCreateModal">新規マーカー
+    </button>
     <script async
             src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLEMAPS_APIKEY }}&callback=initMap">
     </script>
@@ -13,6 +54,53 @@
                 center: {lat: -34.397, lng: 150.644},
                 zoom: 8,
             });
+
+            google.maps.event.addListener(map, "click", (event) => {
+                mapClicked(event.latLng);
+            });
+        }
+
+        function mapClicked(latLng) {
+            initPreview();
+            document.getElementById("lat").value = latLng.lat();
+            document.getElementById("lng").value = latLng.lng();
+            document.getElementById("markerCreateModal").click();
+        }
+
+        function initPreview() {
+            updatePreviewByUrl("{% static 'recomap/no_image.png' %}")
+        }
+
+        function updatePreviewByUrl(src) {
+            let canvas = document.getElementById('preview');
+            let ctx = canvas.getContext('2d');
+            let image = new Image();
+            image.src = src;
+            image.onload = (function () {
+                canvas.width = image.width;
+                canvas.height = image.height;
+                ctx.drawImage(image, 0, 0);
+            });
+        }
+
+        function fileSelect() {
+            document.getElementById("image").click();
+        }
+
+        function updatePreviewByFile(file) {
+            let fileReader = new FileReader();
+            fileReader.onload = (function () {
+                let canvas = document.getElementById('preview');
+                let ctx = canvas.getContext('2d');
+                let image = new Image();
+                image.src = fileReader.result;
+                image.onload = (function () {
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    ctx.drawImage(image, 0, 0);
+                });
+            });
+            fileReader.readAsDataURL(file);
         }
     </script>
     <style>

@@ -8,6 +8,9 @@ django = "~=3.2"
 pillow = "~=8.0"
 django-imagekit = "~=4.0"
 django-cleanup = "~=5.2"
+djangorestframework = "~=3.12"
+markdown = "~=3.3"
+django-filter = "~=2.4"
 
 [dev-packages]
 

@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'user.apps.UserConfig',
     'recomap.apps.RecomapConfig',
+    'recomap.api',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

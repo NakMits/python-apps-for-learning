@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from recomap.models import MarkerModel
-from api.serializers import UserSerializer
+from api.serializers import SnippetSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = MarkerModel.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = SnippetSerializer

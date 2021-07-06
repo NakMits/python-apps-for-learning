@@ -1,15 +1,17 @@
 {% extends 'common/base.html' %}
 
+{% load static %}
+
 {% block header %}
-        <div class="alert alert-primary" role="alert">Marker詳細ページ</div>
+<div class="alert alert-primary" role="alert">Marker詳細ページ</div>
 {% endblock header %}
 
 {% block content %}
-    <p>
-        {{ object.title }}
-        {{ object.tag }}
-        {{ object.memo }}
-        {{ object.lat }}
-        {{ object.lng }}
-    </p>
+<p> タイトル：{{ object.title }}</p>
+<p> 作成者：{{ object.author }}</p>
+<p> イメージ：<img src='{{object.image.url}}' width=200></p>
+<p> タグ：{{ object.tag }}</p>
+<p> メモ：{{ object.memo }}</p>
+<p> lat：{{ object.lat }}</p>
+<p> lng：{{ object.lng }}</p>
 {% endblock content %}
